@@ -26,3 +26,4 @@ async def run_agent(req: AgentRequest):
         ]
     )
     return {"status": "ok", "resultado": message.content[0].text}
+# updated
