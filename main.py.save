@@ -1,0 +1,122 @@
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+from crewai import Agent, Task, Crew
+
+app = FastAPI()
+
+class AgentRequest(BaseModel):
+    tipo: str
+    input_data: dict
+
+@app.post("/run-agent")
+async def run_agent(req: AgentRequest):
+    agentes = {
+        "redactor": Agent(
+            role="Redactor de contenido viral",
+            goal="Crear scripts y hooks con alto engagement para TikTok e Instagram",
+            backstory="Copywriter experto en contenido viral sobre dinero online",
+        ),
+        "analista": Agent(
+            role="Analista de tendencias",
+            goal="Detectar oportunidades virales en el nicho de dinero online",
+            backstory="Experto en métricas y tendencias de redes sociales",
+        ),
+    }
+
+    agente = agentes.get(req.tipo)
+    if not agente:
+        return {"error": f"Agente '{req.tipo}' no existe"}
+
+    tarea = Task(
+        description=f"Procesa este input: {req.input_data}",
+        agent=agente,
+        expected_output="Resultado estructurado con ideas, hooks y scripts"
+    )
+
+    crew = Crew(agents=[agente], tasks=[tarea])
+    resultado = crew.kickoff()
+
+    return {"status": "ok", "resultado": str(resultado)}
+from fastapi import FastAPI
+from pydantic import BaseModel
+from crewai import Agent, Task, Crew
+
+app = FastAPI()
+
+class AgentRequest(BaseModel):
+    tipo: str
+    input_data: dict
+
+@app.post("/run-agent")
+async def run_agent(req: AgentRequest):
+    agentes = {
+        "redactor": Agent(
+            role="Redactor de contenido viral",
+            goal="Crear scripts y hooks con alto engagement para TikTok e Instagram",
+            backstory="Copywriter experto en contenido viral sobre dinero online",
+        ),
+        "analista": Agent(
+            role="Analista de tendencias",
+            goal="Detectar oportunidades virales en el nicho de dinero online",
+            backstory="Experto en métricas y tendencias de redes sociales",
+        ),
+    }
+
+    agente = agentes.get(req.tipo)
+    if not agente:
+        return {"error": f"Agente '{req.tipo}' no existe"}
+
+    tarea = Task(
+        description=f"Procesa este input: {req.input_data}",
+        agent=agente,
+        expected_output="Resultado estructurado con ideas, hooks y scripts"
+    )
+
+    crew = Crew(agents=[agente], tasks=[tarea])
+    resultado = crew.kickoff()
+
+    return {"status": "ok", "resultado": str(resultado)}from fastapi import FastAPI
+from pydantic import BaseModel
+from crewai import Agent, Task, Crew
+
+app = FastAPI()
+
+class AgentRequest(BaseModel):
+    tipo: str
+    input_data: dict
+
+@app.post("/run-agent")
+async def run_agent(req: AgentRequest):
+    agentes = {
+        "redactor": Agent(
+            role="Redactor de contenido viral",
+            goal="Crear scripts y hooks con alto engagement para TikTok e Instagram",
+            backstory="Copywriter experto en contenido viral sobre dinero online",
+        ),
+        "analista": Agent(
+            role="Analista de tendencias",
+            goal="Detectar oportunidades virales en el nicho de dinero online",
+            backstory="Experto en métricas y tendencias de redes sociales",
+        ),
+    }
+
+    agente = agentes.get(req.tipo)
+    if not agente:
+        return {"error": f"Agente '{req.tipo}' no existe"}
+
+    tarea = Task(
+        description=f"Procesa este input: {req.input_data}",
+        agent=agente,
+        expected_output="Resultado estructurado con ideas, hooks y scripts"
+    )
+
+    crew = Crew(agents=[agente], tasks=[tarea])
+    resultado = crew.kickoff()
+
+    return {"status": "ok", "resultado": str(resultado)}
+O
+X
+
+X
+
